@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[RequireComponent (typeof(CircleCollider2D))]
+[RequireComponent (typeof(Collider2D))]
 
-public class Coin : MonoBehaviour
+public class AidKit : MonoBehaviour
 {
-    [SerializeField] private int _nominal = 1;
+    [SerializeField] private int _healthFactor;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
         if (player == null)
             return;
 
-        player.TakeMoney(_nominal);
+        player.TakeHealth(_healthFactor);
         Destroy(gameObject);
     }
 }

@@ -1,47 +1,46 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyAnimator))]
+[RequireComponent (typeof(Rigidbody2D))]
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private float _boostFactor = 2;
     [SerializeField] private float _speed = 5;
-    [SerializeField] private Way _way;
+    [SerializeField] private Eye _eye;
 
     private EnemyAnimator _animator;
+    private Rigidbody2D _rigidbody;
+    private Vector3 _direction;
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<EnemyAnimator>();
-        StartCoroutine(Patrol(_way.GetWayPoints()));
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private IEnumerator Patrol(Vector3[] wayPoints)
+    private void Update()
     {
-        WaitForSeconds delay = new WaitForSeconds(1);
-        bool isPatrol = wayPoints.Length > 0;
-        int currentPoint = 0;
+        if (_eye.IsSeeGround() == false)
+            Rotate();
 
-        if(isPatrol)
-        {
-            _animator.LookAt(wayPoints[currentPoint]);
-            _animator.Run();
-        }
+        if (_eye.IsSeeTarget())
+            Move(_speed * _boostFactor);
+        else
+            Move(_speed);
+    }
 
-        while (isPatrol)
-        {
-            if (transform.position == wayPoints[currentPoint])
-            {
-                _animator.Stay();
-                currentPoint = (currentPoint + 1) % wayPoints.Length;
-                yield return delay;
-                _animator.LookAt(wayPoints[currentPoint]);
-                _animator.Run();
-            }
+    private void Move(float speed)
+    {
+        _direction = _rigidbody.velocity;
+        _direction.x = speed * _eye.Direction.x;
+        _rigidbody.velocity = _direction;
+        _animator.Run();
+    }
 
-            transform.position = Vector3.MoveTowards(transform.position, wayPoints[currentPoint], _speed * Time.deltaTime);
-
-            yield return null;
-        }
+    private void Rotate()
+    {
+        _animator.Rotate();
+        _eye.Rotate();
     }
 }

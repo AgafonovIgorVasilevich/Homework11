@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
-[RequireComponent (typeof (Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 
 public class EnemyAnimator : MonoBehaviour
 {
@@ -10,6 +10,12 @@ public class EnemyAnimator : MonoBehaviour
     private SpriteRenderer _sprite;
     private Animator _animator;
 
+    private void Awake()
+    {
+        _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+    }
+
     public void Run()
     {
         _animator.SetBool(IsRun, true);
@@ -17,17 +23,11 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Stay()
     {
-        _animator.SetBool (IsRun, false);
+        _animator.SetBool(IsRun, false);
     }
 
-    public void LookAt(Vector3 target)
+    public void Rotate()
     {
-        _sprite.flipX = target.x > transform.position.x;
-    }
-
-    private void Awake()
-    {
-        _sprite = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
+        _sprite.flipX = !_sprite.flipX;
     }
 }

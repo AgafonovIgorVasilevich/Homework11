@@ -12,6 +12,18 @@ public class PlayerAnimator : MonoBehaviour
     private SpriteRenderer _sprite;
     private Animator _animator;
 
+    private void Awake()
+    {
+        _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis(Horizontal) != 0)
+            Rotate();
+    }
+
     public void Jump()
     {
         _animator.SetTrigger(GoJump);
@@ -27,19 +39,7 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetBool(IsRun, false);
     }
 
-    private void Awake()
-    {
-        _sprite = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetAxis(Horizontal) != 0)
-            RotateSprite();
-    }
-
-    private void RotateSprite()
+    private void Rotate()
     {
         _sprite.flipX = Input.GetAxis(Horizontal) < 0;
     }

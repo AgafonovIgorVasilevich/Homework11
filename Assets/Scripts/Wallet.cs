@@ -10,6 +10,5 @@ public class Wallet : MonoBehaviour
             return;
 
         _money += value;
-        print(_money);
     }
 }
