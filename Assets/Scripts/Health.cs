@@ -1,14 +1,17 @@
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHealt;
+    [SerializeField] private UnityEvent<int, int> OnHealthChange;
+    [SerializeField] private int _max;
 
-    private int _currentHealt;
+    private int _current;
 
     private void Start()
     {
-        _currentHealt = _maxHealt;
+        _current = _max;
+        OnHealthChange?.Invoke(_current, _max);
     }
 
     public void Add(int value)
@@ -16,12 +19,12 @@ public class Health : MonoBehaviour
         if (value <= 0)
             return;
 
-        if (value + _currentHealt > _maxHealt)
-            _currentHealt = _maxHealt;
+        if (value + _current > _max)
+            _current = _max;
         else
-            _currentHealt += value;
+            _current += value;
 
-        print($"{transform.name}: {_currentHealt}");
+        OnHealthChange?.Invoke(_current, _max);
     }
 
     public void Substract(int value)
@@ -29,15 +32,15 @@ public class Health : MonoBehaviour
         if (value <= 0)
             return;
 
-        if (value > _currentHealt)
-            _currentHealt = 0;
+        if (value > _current)
+            _current = 0;
         else
-            _currentHealt -= value;
+            _current -= value;
 
-        if (_currentHealt == 0)
+        if(_current <= 0)
             Die();
 
-        print($"{transform.name}: {_currentHealt}");
+        OnHealthChange?.Invoke(_current, _max);
     }
 
     private void Die()
