@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(CircleCollider2D))]
+[RequireComponent(typeof(CircleCollider2D))]
 
 public class Coin : MonoBehaviour
 {
@@ -8,12 +8,10 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.GetComponent<Player>();
-
-        if (player == null)
-            return;
-
-        player.TakeMoney(_nominal);
-        Destroy(gameObject);
+        if (collision.TryGetComponent<Player>(out Player player))
+        {
+            player.TakeMoney(_nominal);
+            Destroy(gameObject);
+        }
     }
 }

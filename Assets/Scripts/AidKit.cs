@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D))]
 
 public class AidKit : MonoBehaviour
 {
@@ -8,12 +8,10 @@ public class AidKit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.GetComponent<Player>();
-
-        if (player == null)
-            return;
-
-        player.TakeHealth(_healthFactor);
-        Destroy(gameObject);
+        if (collision.TryGetComponent<Player>(out Player player))
+        {
+            player.TakeHealth(_healthFactor);
+            Destroy(gameObject);
+        }
     }
 }

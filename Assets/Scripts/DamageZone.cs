@@ -8,11 +8,7 @@ public class DamageZone : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
-
-        if (player == null)
-            return;
-
-        player.TakeDamage(_damage);
+        if (collision.transform.TryGetComponent<Player>(out Player player))
+            player.TakeDamage(_damage);
     }
 }

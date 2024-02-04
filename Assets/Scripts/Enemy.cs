@@ -5,12 +5,5 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private EnemyMovement _movement;
-    private Health _health;
 
-    private void Start()
-    {
-        _movement = GetComponent<EnemyMovement>();
-        _health = GetComponent<Health>();
-    }
 }

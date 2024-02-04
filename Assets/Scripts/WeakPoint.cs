@@ -7,11 +7,7 @@ public class WeakPoint : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
-
-        if (player == null)
-            return;
-
-        _health.Substract(_damageFactor * player.Damage);
+        if (collision.transform.TryGetComponent<Player>(out Player player))
+            _health.Substract(_damageFactor * player.Damage);
     }
 }
