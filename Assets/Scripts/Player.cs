@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
 
     private PlayerMovement _movement;
     private Health _health;
+    private Wallet _wallet;
 
     private void Start()
     {
         _movement = GetComponent<PlayerMovement>();
         _health = GetComponent<Health>();
+        _wallet = GetComponent<Wallet>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,8 +31,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void TakeHealth(float value)
+    {
+        _health.TakeHealth(value);
+    }
+
     public void TakeDamage(float value)
     {
         _health.TakeDamage(value);
+    }
+
+    public void AddMoney(int value)
+    {
+        _wallet.AddMoney(value);
     }
 }

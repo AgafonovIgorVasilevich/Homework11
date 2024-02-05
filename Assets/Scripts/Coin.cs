@@ -8,9 +8,9 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Wallet>(out Wallet wallet))
+        if (collision.TryGetComponent<Player>(out Player player))
         {
-            wallet.AddMoney(_nominal);
+            player.AddMoney(_nominal);
             Destroy(gameObject);
         }
     }

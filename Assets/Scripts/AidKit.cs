@@ -8,12 +8,9 @@ public class AidKit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
-            return;
-
-        if (collision.TryGetComponent<Health>(out Health health))
+        if (collision.TryGetComponent<Player>(out Player player))
         {
-            health.TakeHealth(_healthFactor);
+            player.TakeHealth(_healthFactor);
             Destroy(gameObject);
         }
     }
