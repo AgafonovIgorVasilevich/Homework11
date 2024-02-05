@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class AidKitSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private AidKit _aidKitPrototype;
+    [SerializeField] private GameObject _template;
     [SerializeField] private int _count;
 
     private void OnValidate()
     {
-        if(_count > _spawnPoints.Length)
+        if (_count > _spawnPoints.Length)
             _count = _spawnPoints.Length;
     }
 
@@ -21,15 +21,14 @@ public class AidKitSpawner : MonoBehaviour
     {
         Transform spawnPoint;
 
-        while(_count > 0)
+        while (_count > 0)
         {
-            spawnPoint = _spawnPoints[Random.Range(0,
-                _spawnPoints.Length)];
+            spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
 
-            if(spawnPoint.childCount > 0)
+            if (spawnPoint.childCount > 0)
                 continue;
 
-            Instantiate(_aidKitPrototype, spawnPoint);
+            Instantiate(_template, spawnPoint);
             _count--;
         }
     }

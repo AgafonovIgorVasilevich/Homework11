@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isGround = true;
+        if(collision.collider.TryGetComponent<Ground>(out Ground ground))
+            _isGround = ground;
     }
 
     public void FlyOff(Vector3 direction)

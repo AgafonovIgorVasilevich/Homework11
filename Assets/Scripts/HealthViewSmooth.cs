@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class HealthViewSmooth : HealthView
 {
-    [SerializeField] private float _speedChanging = 1;
+    [SerializeField] private float _speed = 1;
     [SerializeField] private Image _image;
 
     private bool _inProgress = false;
     private float _currentValue;
 
-    public override void Show(int current, int max)
+    public override void Show(float current, float max)
     {
-        _currentValue = (float)current / max;
+        _currentValue = current / max;
 
         if (_inProgress == false)
             StartCoroutine(ChangeValue());
@@ -24,9 +24,8 @@ public class HealthViewSmooth : HealthView
 
         while (_image.fillAmount != _currentValue)
         {
-            _image.fillAmount = Mathf.MoveTowards(
-                _image.fillAmount, _currentValue,
-                _speedChanging * Time.deltaTime);
+            _image.fillAmount =
+                Mathf.MoveTowards(_image.fillAmount, _currentValue, _speed * Time.deltaTime);
             yield return null;
         }
 

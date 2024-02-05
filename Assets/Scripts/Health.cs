@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<int, int> OnHealthChange;
-    [SerializeField] private int _max;
+    [SerializeField] private UnityEvent<float, float> OnHealthChange;
+    [SerializeField] private float _max;
 
-    private int _current;
+    private float _current;
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
         OnHealthChange?.Invoke(_current, _max);
     }
 
-    public void Add(int value)
+    public void TakeHealth(float value)
     {
         if (value <= 0)
             return;
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
         OnHealthChange?.Invoke(_current, _max);
     }
 
-    public void Substract(int value)
+    public void TakeDamage(float value)
     {
         if (value <= 0)
             return;

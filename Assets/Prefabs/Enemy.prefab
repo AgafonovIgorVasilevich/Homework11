@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f829634230b9140a3b1d3f6e8e9ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 1
 --- !u!50 &1959389229845628300
 Rigidbody2D:
   serializedVersion: 4
@@ -265,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3156392310087491505}
   - component: {fileID: 6664774327094257767}
-  - component: {fileID: 8478963223591332384}
+  - component: {fileID: 8540484636162783922}
   m_Layer: 0
   m_Name: DamageZone
   m_TagString: Untagged
@@ -333,7 +334,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &8478963223591332384
+--- !u!114 &8540484636162783922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,10 +343,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1593261116750266004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb1c770893aa8974db19ac76fde7f89f, type: 3}
+  m_Script: {fileID: 11500000, guid: 16eeb0d5139579448be1652cd5c11bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _isWeakPoint: 0
+  _enemy: {fileID: 5273026449429111787}
 --- !u!1 &2837959860311150131
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,8 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16eeb0d5139579448be1652cd5c11bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageFactor: 1
-  _health: {fileID: 5975580808063047118}
+  _isWeakPoint: 1
+  _enemy: {fileID: 5273026449429111787}
 --- !u!1 &3390166090816111030
 GameObject:
   m_ObjectHideFlags: 0

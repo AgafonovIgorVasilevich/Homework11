@@ -6,18 +6,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int _damage = 1;
+    [SerializeField] private float _damage = 1;
 
-    public int Damage => _damage;
+    public float Damage => _damage;
 
     private PlayerMovement _movement;
-    private Wallet _wallet;
     private Health _health;
 
     private void Start()
     {
         _movement = GetComponent<PlayerMovement>();
-        _wallet = GetComponent<Wallet>();
         _health = GetComponent<Health>();
     }
 
@@ -31,18 +29,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeHealth(int value)
+    public void TakeDamage(float value)
     {
-        _health.Add(value);
-    }
-
-    public void TakeDamage(int value)
-    {
-        _health.Substract(value);
-    }
-
-    public void TakeMoney(int value)
-    {
-        _wallet.AddMoney(value);
+        _health.TakeDamage(value);
     }
 }
