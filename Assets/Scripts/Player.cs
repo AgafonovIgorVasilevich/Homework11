@@ -6,11 +6,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private VampireArea _vampireArea;
+
     private PlayerMovement _movement;
 
     private void Start()
     {
         _movement = GetComponent<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.W) && _vampireArea.isActiveAndEnabled == false)
+            _vampireArea.gameObject.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

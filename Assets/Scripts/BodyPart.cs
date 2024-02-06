@@ -20,7 +20,6 @@ public class BodyPart : MonoBehaviour
         {
             if (_isReadyToDamage)
             {
-                print(transform.name);
                 _health.TakeDamage(attackArea.Damage);
                 StartCoroutine(DelayBetweenHits());
             }

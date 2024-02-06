@@ -9639,6 +9639,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7637708113485368550, guid: 9b036889b51ef6544bd005179cf5d267, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9975,17 +9979,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6156867404285473473, guid: c2d4880d86edaec4fbf23aa8fe427a48, type: 3}
   m_PrefabInstance: {fileID: 7448991013286385375}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1410611545 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1519210936352082119, guid: c2d4880d86edaec4fbf23aa8fe427a48, type: 3}
-  m_PrefabInstance: {fileID: 7448991013286385375}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 419e88c7d4763924fa200ca8ac9d1016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1478034296
 GameObject:
   m_ObjectHideFlags: 0
@@ -13066,10 +13059,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
-      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1410611545}
     - target: {fileID: 8068024237352722240, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
       propertyPath: m_Name
       value: Player
