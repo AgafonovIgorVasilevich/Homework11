@@ -9601,7 +9601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051133987654850655, guid: 9b036889b51ef6544bd005179cf5d267, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11
+      value: -12.59
       objectReference: {fileID: 0}
     - target: {fileID: 6051133987654850655, guid: 9b036889b51ef6544bd005179cf5d267, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9638,10 +9638,6 @@ PrefabInstance:
     - target: {fileID: 6051133987654850655, guid: 9b036889b51ef6544bd005179cf5d267, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7637708113485368550, guid: 9b036889b51ef6544bd005179cf5d267, type: 3}
-      propertyPath: _way
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9826,6 +9822,17 @@ Transform:
   m_Father: {fileID: 1272634991}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249455040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
+  m_PrefabInstance: {fileID: 3973350977369741257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387fab95a322d4a43b6e8acaca62e36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1272634990
 GameObject:
   m_ObjectHideFlags: 0
@@ -13060,29 +13067,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
-      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
       propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1410611545}
-    - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
-      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
-      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Show
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
-      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HealthViewSmooth, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109848812791153446, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
-      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8068024237352722240, guid: 86ad5db046c9cce458eaffdda9152a18, type: 3}
       propertyPath: m_Name
       value: Player
@@ -13144,6 +13131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1529162482}
     m_Modifications:
+    - target: {fileID: 1519210936352082119, guid: c2d4880d86edaec4fbf23aa8fe427a48, type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 1249455040}
     - target: {fileID: 3009442700168791866, guid: c2d4880d86edaec4fbf23aa8fe427a48, type: 3}
       propertyPath: m_Name
       value: HealthBar

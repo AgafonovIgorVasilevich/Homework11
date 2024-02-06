@@ -24,23 +24,11 @@ public class PlayerAnimator : MonoBehaviour
             Rotate();
     }
 
-    public void Jump()
-    {
-        _animator.SetTrigger(GoJump);
-    }
+    public void Jump() => _animator.SetTrigger(GoJump);
 
-    public void Run()
-    {
-        _animator.SetBool(IsRun, true);
-    }
+    public void Run() => _animator.SetBool(IsRun, true);
 
-    public void Stay()
-    {
-        _animator.SetBool(IsRun, false);
-    }
+    public void Stay() => _animator.SetBool(IsRun, false);
 
-    private void Rotate()
-    {
-        _sprite.flipX = Input.GetAxis(Horizontal) < 0;
-    }
+    private void Rotate() => _sprite.flipX = Input.GetAxis(Horizontal) < 0;
 }

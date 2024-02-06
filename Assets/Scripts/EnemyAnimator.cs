@@ -16,18 +16,9 @@ public class EnemyAnimator : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void Run()
-    {
-        _animator.SetBool(IsRun, true);
-    }
+    public void Run() => _animator.SetBool(IsRun, true);
 
-    public void Stay()
-    {
-        _animator.SetBool(IsRun, false);
-    }
+    public void Stay() => _animator.SetBool(IsRun, false);
 
-    public void Rotate()
-    {
-        _sprite.flipX = !_sprite.flipX;
-    }
+    public void Rotate() => _sprite.flipX = !_sprite.flipX;
 }

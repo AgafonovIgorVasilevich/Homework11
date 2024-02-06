@@ -1,18 +1,36 @@
+using System.Collections;
 using UnityEngine;
+
+[RequireComponent(typeof(Health))]
 
 public class BodyPart : MonoBehaviour
 {
-    [SerializeField] private bool _isWeakPoint;
-    [SerializeField] private Enemy _enemy;
+    private WaitForSeconds _delay = new WaitForSeconds(0.5f);
+    private bool _isReadyToDamage = true;
+    private Health _health;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Awake()
     {
-        if (collision.transform.TryGetComponent<Player>(out Player player))
+        _health = GetComponent<Health>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out AttackArea attackArea))
         {
-            if (_isWeakPoint)
-                _enemy.TakeDamage(player.Damage);
-            else
-                player.TakeDamage(_enemy.Damage);
+            if (_isReadyToDamage)
+            {
+                print(transform.name);
+                _health.TakeDamage(attackArea.Damage);
+                StartCoroutine(DelayBetweenHits());
+            }
         }
+    }
+
+    private IEnumerator DelayBetweenHits()
+    {
+        _isReadyToDamage = false;
+        yield return _delay;
+        _isReadyToDamage = true;
     }
 }

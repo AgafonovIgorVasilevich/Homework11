@@ -2,16 +2,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 
-public class AidKit : MonoBehaviour
+public class AidKit : TakableObject
 {
     [SerializeField] private int _healthFactor;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Player>(out Player player))
-        {
-            player.TakeHealth(_healthFactor);
-            Destroy(gameObject);
-        }
-    }
+    public int HealthFactor => _healthFactor;
 }

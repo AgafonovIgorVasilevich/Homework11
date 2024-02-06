@@ -12,11 +12,7 @@ public class Eye : MonoBehaviour
 
     public Vector3 Direction => _direction;
 
-    public bool IsSeeGround()
-    {
-        return Physics2D.Raycast(transform.position,
-            Vector3.down, _distanceToGround);
-    }
+    public bool IsSeeGround() => Physics2D.Raycast(transform.position, Vector3.down, _distanceToGround);
 
     public bool IsSeeTarget()
     {
