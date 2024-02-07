@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovement))]
-[RequireComponent(typeof(BodyPart))]
+[RequireComponent(typeof(Health))]
 
 public class Enemy : MonoBehaviour
 {

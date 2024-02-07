@@ -3,51 +3,47 @@ using UnityEngine;
 
 public class VampireArea : MonoBehaviour
 {
-    [SerializeField] private float _activeTime = 3;
-    [SerializeField] private float _speed = 0.5f;
+    [SerializeField] private float _healthPerSecond = 0.5f;
     [SerializeField] private Health _selfHealth;
     [SerializeField] private float _radius = 3;
+    [SerializeField] private LayerMask _mask;
 
-    private Collider2D[] _targets;
+    private WaitForSeconds _activeTime = new WaitForSeconds(6);
 
     private void OnEnable()
     {
         StartCoroutine(DelayedDisable());
+        StartCoroutine(SuckHealth());
     }
 
-    private void Update()
+    private IEnumerator SuckHealth()
     {
-        _targets = Physics2D.OverlapCircleAll(transform.position, _radius);
+        Collider2D[] victims;
+        float timeTick = 0.1f;
 
-        if (_targets.Length > 0)
-            SuckHealth();
-    }
+        WaitForSeconds _delay = new WaitForSeconds(timeTick);
+        float suckFactor = _healthPerSecond * timeTick;
 
-    private void SuckHealth()
-    {
-        foreach (Collider2D target in _targets)
+        while (gameObject.activeSelf)
         {
-            if (target.TryGetComponent(out Health health))
-            {
-                if (health == _selfHealth)
-                    continue;
+            victims = Physics2D.OverlapCircleAll(transform.position, _radius, _mask);
 
-                health.TakeDamage(_speed * Time.deltaTime);
-                _selfHealth.TakeHealth(_speed * Time.deltaTime);
+            foreach (Collider2D victim in victims)
+            {
+                if (victim.TryGetComponent(out Health health))
+                {
+                    health.TakeDamage(suckFactor);
+                    _selfHealth.TakeHealth(suckFactor);
+                }
             }
+
+            yield return _delay;
         }
     }
 
     private IEnumerator DelayedDisable()
     {
-        float currentTime = 0;
-
-        while (currentTime < _activeTime)
-        {
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
-
+        yield return _activeTime;
         gameObject.SetActive(false);
     }
 }
